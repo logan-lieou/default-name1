@@ -1,0 +1,64 @@
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+	font-size: 12pt;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+ul {
+	list-style-type: none;
+}
+
+h1 {
+	font-family: arial, sans-serif;
+	font-size: 36pt;
+}
+
+h2 {
+	font-family: arial, sans-serif;
+	font-size: 24pt;
+}
+
+li {
+	font-family: arial, sans-serif;
+	font-size: 12pt;
+}
+</style>
+</head>
+
+<h1>{{ patient.name }}</h1>
+<hr>
+<h2>Information</h2>
+<ul>
+	<li><b>Address</b>: {{patient.address}}</li>
+	<li><b>Emergency Contact</b>: {{patient.emergency_contact}}</li>
+	<li><b>Birth Date</b>: {{patient.birth_date}}</li>
+	<li><b>Medical Plan</b>: {{patient.medical_plan}}</li>
+	<li><b>Medical Id</b>: {{patient.medical_id}}</li>
+</ul>
+<h2>Records</h2>
+<hr/>
+<table>
+	<tr>
+		<th>Date</th>
+		<th>Description</th>
+	</tr>
+{% for item in patient.record_set.all %}
+	<tr>
+		<td>{{item.date}}</td>
+		<td>{{item.description}}</td>
+	</tr>
+{% endfor %}
+</table>

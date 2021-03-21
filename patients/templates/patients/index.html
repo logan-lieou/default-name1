@@ -1,0 +1,28 @@
+<head>
+<style>
+h1 {
+	font-family: arial, sans-serif;
+	font-size: 36pt;
+}
+li {
+	font-family: arial, sans-serif;
+	font-size: 18pt;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+</style>
+</head>
+
+<h1>Patients</h1>
+<hr/>
+{% if patient_list %}
+	<ul>
+		{% for patient in patient_list %}
+			<li><a href="{% url 'detail' patient.id %}">{{ patient.name }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>No patients avalible</p>
+{% endif %}
